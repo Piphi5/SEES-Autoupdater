@@ -7,6 +7,12 @@ from datetime import date
 today = date.today()
 url = f"https://api.globe.gov/search/v1/measurement/protocol/measureddate/?protocols=mosquito_habitat_mapper&startdate=2020-06-01&enddate={today}&geojson=FALSE&sample=FALSE"
 
+
+
+repo = Repo(os.getcwd())
+
+repo.heads.data.checkout()
+
 response = requests.get(url)
 globe_data = response.json()["results"]
 globe_data_df = pd.DataFrame(globe_data)
@@ -18,10 +24,6 @@ mosquito_data_df[["mosquitohabitatmapperLarvaeCount", "latitude", "longitude"]].
 
 
 mosquito_data_df.to_csv("mosquito_data.csv")
-
-repo = Repo(os.getcwd())
-
-repo.heads.data.checkout()
 
 file_list = [
     "mosquito_data.csv"

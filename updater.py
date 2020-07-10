@@ -2,8 +2,10 @@ import requests
 import pandas as pd
 from git import Repo
 import os
+from datetime import date
 
-url = "https://api.globe.gov/search/v1/measurement/protocol/measureddate/?protocols=mosquito_habitat_mapper&startdate=2020-06-01&enddate=2020-07-04&geojson=FALSE&sample=TRUE"
+today = date.today()
+url = f"https://api.globe.gov/search/v1/measurement/protocol/measureddate/?protocols=mosquito_habitat_mapper&startdate=2020-06-01&enddate={today}&geojson=FALSE&sample=TRUE"
 
 response = requests.get(url)
 globe_data = response.json()["results"]
@@ -19,6 +21,9 @@ mosquito_data_df.to_csv("mosquito_data.csv")
 
 repo = Repo(os.getcwd())
 
+repo.heads.data.checkout()
+
+
 file_list = [
     "mosquito_data.csv"
 ]
@@ -26,4 +31,4 @@ commit_message = 'Automated data commit of GLOBE data'
 repo.index.add(file_list)
 repo.index.commit(commit_message)
 origin = repo.remote('origin')
-origin.push("master")
+origin.push("data")

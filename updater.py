@@ -23,7 +23,6 @@ repo = Repo(os.getcwd())
 
 repo.heads.data.checkout()
 
-
 file_list = [
     "mosquito_data.csv"
 ]

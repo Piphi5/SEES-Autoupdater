@@ -5,7 +5,7 @@ import os
 from datetime import date
 
 today = date.today()
-url = f"https://api.globe.gov/search/v1/measurement/protocol/measureddate/?protocols=mosquito_habitat_mapper&startdate=2020-06-01&enddate={today}&geojson=FALSE&sample=TRUE"
+url = f"https://api.globe.gov/search/v1/measurement/protocol/measureddate/?protocols=mosquito_habitat_mapper&startdate=2020-06-01&enddate={today}&geojson=FALSE&sample=FALSE"
 
 response = requests.get(url)
 globe_data = response.json()["results"]

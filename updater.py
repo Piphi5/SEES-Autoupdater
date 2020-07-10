@@ -16,3 +16,14 @@ mosquito_data_df[["mosquitohabitatmapperLarvaeCount", "latitude", "longitude"]].
 
 
 mosquito_data_df.to_csv("mosquito_data.csv")
+
+repo = Repo(os.getcwd())
+
+file_list = [
+    "mosquito_data.csv"
+]
+commit_message = 'Automated data commit of GLOBE data'
+repo.index.add(file_list)
+repo.index.commit(commit_message)
+origin = repo.remote('origin')
+origin.push("master")

@@ -3,6 +3,8 @@ import pandas as pd
 from git import Repo
 import os
 from datetime import date
+from git import Actor
+
 
 today = date.today()
 url = f"https://api.globe.gov/search/v1/measurement/protocol/measureddate/?protocols=mosquito_habitat_mapper&startdate=2020-06-01&enddate={today}&geojson=FALSE&sample=FALSE"
@@ -10,7 +12,8 @@ url = f"https://api.globe.gov/search/v1/measurement/protocol/measureddate/?proto
 
 
 repo = Repo(os.getcwd())
-
+author = Actor("piphi5", "mateus.sakata@gmail.com")
+committer = Actor("A committer", "mateus.sakata@gmail.com")
 repo.heads.data.checkout()
 
 response = requests.get(url)

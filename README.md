@@ -1,6 +1,4 @@
 # SEES-Autoupdater
-Uses Github Actions to automatically run a script that pulls mosquito mapper data from the GLOBE API and generates a CSV.
+Uses Github Actions to automatically run a script that pulls mosquito mapper data and landcover data collected by NASA SEES Interns from the GLOBE API and generates CSV files.
 
-The raw version of this CSV is used by an ArcGIS Map: https://arcg.is/0mmfnq
-
-This allows the map to be updated with new data every day.
+This allows the daily data to be collected.

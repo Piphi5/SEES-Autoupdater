@@ -22,6 +22,6 @@ for protocol in protocols:
             data_df = pd.DataFrame(temp_data_df["data"].to_dict())
             data_df = data_df.transpose()
             temp_data_df = temp_data_df.join(data_df)
-            temp_data_df.drop(["data"], axis=1)
+            temp_data_df.drop(["data"], axis=1, inplace = True)
             main_df = main_df.append(temp_data_df)
     main_df.to_csv(f"results/{protocol}{today}.csv")
